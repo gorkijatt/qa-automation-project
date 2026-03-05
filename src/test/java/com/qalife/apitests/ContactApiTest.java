@@ -16,6 +16,7 @@ import static org.hamcrest.Matchers.*;
  * What it does: Submits a contact message (requires login token)
  * Request body: { name, email, message }
  * Header: Authorization: Bearer <token>
+ * New entry
  */
 public class ContactApiTest {
 
