@@ -1,0 +1,51 @@
+name: Run Tests
+
+# When does this run?
+on:
+  push:
+    branches: [main]        # Every push to main
+  pull_request:
+    branches: [main]        # Every PR to main
+  workflow_dispatch:          # Manual trigger (click "Run workflow" button on GitHub)
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Get the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Install Java 17
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # Step 3: Install Chrome browser
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 'stable'
+
+      # Step 4: Run all tests
+      - name: Run tests
+        run: mvn test
+
+      # Step 5: Upload Extent Report as artifact (download from GitHub Actions tab)
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extent-report
+          path: reports/ExtentReport.html
+
+      # Step 6: Upload TestNG reports too
+      - name: Upload TestNG reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: testng-reports
+          path: target/surefire-reports/
