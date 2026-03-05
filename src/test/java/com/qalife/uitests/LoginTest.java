@@ -59,7 +59,7 @@ public class LoginTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#message")));
 
         // Step 2: Go to login page and login
-        driver.get(baseUrl + "/newlogin");
+        driver.get(baseUrl + "/login");
         driver.findElement(By.cssSelector("#input-email")).sendKeys(email);
         driver.findElement(By.cssSelector("#input-password")).sendKeys(password);
         driver.findElement(By.cssSelector("#btn-login")).click();
