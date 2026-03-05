@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="QA Life - Simple Tests">
+
+    <listeners>
+        <listener class-name="com.qalife.listeners.ExtentReportListener"/>
+    </listeners>
+
+    <test name="API Tests">
+        <classes>
+            <class name="com.qalife.apitests.RegisterApiTest"/>
+            <class name="com.qalife.apitests.LoginApiTest"/>
+            <class name="com.qalife.apitests.ContactApiTest"/>
+            <class name="com.qalife.apitests.LogoutApiTest"/>
+        </classes>
+    </test>
+
+    <test name="UI Tests">
+        <classes>
+            <class name="com.qalife.uitests.RegisterTest"/>
+            <class name="com.qalife.uitests.LoginTest"/>
+            <class name="com.qalife.uitests.ContactUsTest"/>
+            <class name="com.qalife.uitests.LogoutTest"/>
+        </classes>
+    </test>
+
+</suite>
